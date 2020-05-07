@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Wiki-App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet/less" type="text/css" href="app/main.less" />
+</head>
+
+<body ng-controller="MainController as ctrl">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.js"></script>
+  <script src="app/app.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+
+  <div class="container">
+    <a class="random-article-div" target="_blank" ng-href="https://en.wikipedia.org/wiki/Special:Random">
+      Click here for
+      a random article
+    </a>
+    <input type="text" placeholder="{{ctrl.search}} ">
+    <div class="search"></div>
+    <div class="icon-search-div"> Click icon to search</div>
+  </div>
+</body>
+
+</html>
