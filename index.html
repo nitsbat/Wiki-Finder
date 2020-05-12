@@ -17,15 +17,23 @@
   <script src="app/app.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
-  <div class="container">
+  <div class="containertwo">
     <a class="random-article-div" target="_blank" ng-href="https://en.wikipedia.org/wiki/Special:Random">
-      Click here for
-      a random article
+      Click here for a random article
     </a>
-    <input type="text" placeholder="{{ctrl.search}} ">
-    <div class="search"></div>
-    <div class="icon-search-div"> Click icon to search</div>
+    <form id="demo-2">
+      <input id="input-box" autocomplete="off" type="search" placeholder="{{ctrl.search}}" ng-model="searchInput"
+        ng-keyup="$event.keyCode == 13 && ctrl.searchWikipedia()" ng-click="ctrl.setSearchStyle()">
+    </form>
+    <div class="icon-search-div" ng-class="{active : ctrl.searchEnabled}"> Click icon to search </div>
   </div>
+
+  <div class="container-by-parent">
+    <div class="container-by-element" ng-repeat="searchBox in resultList">
+      {{searchBox.title}}
+    </div>
+  </div>
+
 </body>
 
 </html>
