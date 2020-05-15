@@ -7,6 +7,7 @@ var myApp = angular.module('myApp', [
 ])
 
 myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', function ($scope, $sce, $resource, $http) {
+  var searchLink = "https://en.wikipedia.org/wiki/";
   this.search = "Search..";
   $scope.searchInput = "";
   this.searchEnabled = false;
@@ -23,6 +24,7 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', func
         .then(function (result) {
           if (populateSearchList(result)) {
             $scope.resultList = populateSearchList(result);
+            addSearchTermtoList();
             console.log($scope.resultList);
           } else {
             throw "The http response hasn't come"
@@ -33,6 +35,11 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', func
       alert("ERROR : " + e);
     }
 
+  }
+  function addSearchTermtoList() {
+    $scope.resultList.forEach(element => {
+      element.searchTerm = searchLink + (element.title).replace(/\s/g, "_");
+    });
   }
 
   function setSearchBarAtTheTop() {

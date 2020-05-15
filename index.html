@@ -19,7 +19,12 @@
 
   <div class="container-by-parent">
     <div class="container-by-element" ng-repeat="searchBox in resultList">
-      {{searchBox.title}}
+      <a ng-href={{searchBox.searchTerm}} target="_blank" style="text-decoration: none;color: black;">
+        <ul style="list-style: none;">
+          <li class="search-heading">{{searchBox.title}}</li>
+          <li class="search-description">{{searchBox.snippet}}</li>
+        </ul>
+      </a>
     </div>
   </div>
 
