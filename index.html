@@ -17,6 +17,12 @@
   <script src="app/app.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
+  <div class="container-by-parent">
+    <div class="container-by-element" ng-repeat="searchBox in resultList">
+      {{searchBox.title}}
+    </div>
+  </div>
+
   <div class="containertwo">
     <a class="random-article-div" target="_blank" ng-href="https://en.wikipedia.org/wiki/Special:Random">
       Click here for a random article
@@ -28,11 +34,7 @@
     <div class="icon-search-div" ng-class="{active : ctrl.searchEnabled}"> Click icon to search </div>
   </div>
 
-  <div class="container-by-parent">
-    <div class="container-by-element" ng-repeat="searchBox in resultList">
-      {{searchBox.title}}
-    </div>
-  </div>
+
 
 </body>
 
