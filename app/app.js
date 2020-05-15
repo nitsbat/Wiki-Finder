@@ -24,7 +24,8 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', func
         .then(function (result) {
           if (populateSearchList(result)) {
             $scope.resultList = populateSearchList(result);
-            addSearchTermtoList();
+            addSearchTermtoList(); // for searching in wikipedia api
+            getBodyDescription(); // to get the description under the heading of div
             console.log($scope.resultList);
           } else {
             throw "The http response hasn't come"
@@ -36,6 +37,15 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', func
     }
 
   }
+
+  function getBodyDescription() {
+    $scope.resultList.forEach(element => {
+      let parser = new DOMParser()
+      let doc = parser.parseFromString(element.snippet, "text/html")
+      element.bodyDescription = doc.body.innerText;
+    });
+  }
+
   function addSearchTermtoList() {
     $scope.resultList.forEach(element => {
       element.searchTerm = searchLink + (element.title).replace(/\s/g, "_");
