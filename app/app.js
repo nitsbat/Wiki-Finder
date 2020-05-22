@@ -6,7 +6,33 @@ var myApp = angular.module('myApp', [
   'ngResource'
 ])
 
-myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', function ($scope, $sce, $resource, $http) {
+myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', 'MobileService', function ($scope, $sce, $resource, $http, MobileService) {
+  var isMobile = {
+    Android: function () {
+      return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function () {
+      return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function () {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function () {
+      return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function () {
+      return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function () {
+      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    },
+    yo: () => { return "yo" }
+  };
+  this.isMobileDevice = isMobile.any();
+
+  if (isMobile.any()) {
+    console.log("Mobile Device Detected");
+  }
   var searchLink = "https://en.wikipedia.org/wiki/";
   this.search = "Search..";
   $scope.searchInput = "";
@@ -53,7 +79,11 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', func
   }
 
   function setSearchBarAtTheTop() {
-    document.getElementsByClassName("containertwo")[0].style.margin = "-200px 0px 0px -50px";
+    if (isMobile.any()) {
+      document.getElementsByClassName("containertwo")[0].style.margin = "-150px 0px 0px -10px";
+    } else {
+      document.getElementsByClassName("containertwo")[0].style.margin = "-200px 0px 0px -50px";
+    }
   }
 
   function populateSearchList(result) {
@@ -64,8 +94,12 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', func
     document.getElementsByClassName("random-article-div")[0].style.visibility = "hidden";
     document.getElementsByClassName("icon-search-div")[0].style.visibility = "hidden";
     if (!this.checkForMovement) {
-      document.getElementById("input-box").style.margin = "0px 0px 0px -50px";
+      document.getElementsByClassName("input-box")[0].style.margin = "0px 0px 0px -50px";
       this.checkForMovement = true;
     }
   }
+}])
+
+myApp.service('MobileService', [function () {
+
 }])

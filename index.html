@@ -17,24 +17,26 @@
   <script src="app/app.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
-  <div class="container-by-parent">
-    <div class="container-by-element" ng-repeat="searchBox in resultList">
+  <div class="container-by-parent" ng-class="{'container-by-parent-mobile': ctrl.isMobileDevice}">
+    <div class="container-by-element" ng-class="{'container-by-element-mobile': ctrl.isMobileDevice}"
+      ng-repeat="searchBox in resultList">
       <a ng-href={{searchBox.searchTerm}} target="_blank" style="text-decoration: none;color: black;">
         <ul style="list-style: none;">
-          <li class="search-heading">{{searchBox.title}}</li>
-          <li class="search-description">{{searchBox.bodyDescription}} <span style="color: blue;">.... read more</span>
+          <li class="search-heading" ng-class="{'search-heading-mobile': ctrl.isMobileDevice}">{{searchBox.title}}</li>
+          <li class="search-description" ng-class="{'search-description-mobile': ctrl.isMobileDevice}">
+            {{searchBox.bodyDescription}} <span style="color: blue;">.... read more</span>
           </li>
         </ul>
       </a>
     </div>
   </div>
 
-  <div class="containertwo">
+  <div class="containertwo" ng-class="{'container-two-mobile': ctrl.isMobileDevice}">
     <a class="random-article-div" target="_blank" ng-href="https://en.wikipedia.org/wiki/Special:Random">
       Click here for a random article
     </a>
-    <form id="demo-2">
-      <input id="input-box" autocomplete="off" type="search" placeholder="{{ctrl.search}}" ng-model="searchInput"
+    <form class="demo-2" ng-class="{'demo-2-mobile': ctrl.isMobileDevice}">
+      <input class="input-box" autocomplete="off" type="search" placeholder="{{ctrl.search}}" ng-model="searchInput"
         ng-keyup="$event.keyCode == 13 && ctrl.searchWikipedia()" ng-click="ctrl.setSearchStyle()">
     </form>
     <div class="icon-search-div" ng-class="{active : ctrl.searchEnabled}"> Click icon to search </div>
