@@ -80,7 +80,7 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', 'Mob
 
   function setSearchBarAtTheTop() {
     if (isMobile.any()) {
-      document.getElementsByClassName("containertwo")[0].style.margin = "-150px 0px 0px -10px";
+      document.getElementsByClassName("containertwo")[0].style.margin = "-330px 0px 0px -10px";
     } else {
       document.getElementsByClassName("containertwo")[0].style.margin = "-200px 0px 0px -50px";
     }
