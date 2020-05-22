@@ -32,7 +32,8 @@
   </div>
 
   <div class="containertwo" ng-class="{'container-two-mobile': ctrl.isMobileDevice}">
-    <a class="random-article-div" target="_blank" ng-href="https://en.wikipedia.org/wiki/Special:Random">
+    <a class="random-article-div" ng-class="{'random-article-div-mobile': ctrl.isMobileDevice}" target="_blank"
+      ng-href="https://en.wikipedia.org/wiki/Special:Random">
       Click here for a random article
     </a>
     <form class="demo-2" ng-class="{'demo-2-mobile': ctrl.isMobileDevice}">
