@@ -93,7 +93,7 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', 'Mob
     document.getElementsByClassName("random-article-div")[0].style.visibility = "hidden";
     document.getElementsByClassName("icon-search-div")[0].style.visibility = "hidden";
     if (!this.checkForMovement) {
-      document.getElementsByClassName("input-box")[0].style.margin = "0px 0px 0px -50px";
+      document.getElementsByClassName("input-box")[0].style.margin = "0px 0px 0px -20%";
       this.checkForMovement = true;
     }
   }
