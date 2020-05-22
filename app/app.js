@@ -52,7 +52,6 @@ myApp.controller('MainController', ['$scope', '$sce', '$resource', '$http', 'Mob
             $scope.resultList = populateSearchList(result);
             addSearchTermtoList(); // for searching in wikipedia api
             getBodyDescription(); // to get the description under the heading of div
-            console.log($scope.resultList);
           } else {
             throw "The http response hasn't come"
           }
